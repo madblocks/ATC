@@ -22,4 +22,4 @@ Languages
 JS, Python, TypeScript
 
 Trello - https://trello.com/b/fjNf6uZj/atc
-ERD - 
+ERD - https://app.diagrams.net/#G1zqVpfTr_HdkTnneqk_vm_blONzdEZehF
