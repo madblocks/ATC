@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import environ
+from datetime import timedelta
+import os
 
 env = environ.Env(
     # set casting, default value
@@ -34,6 +36,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,7 +51,7 @@ INSTALLED_APPS = [
     'atc_app',
     'rest_framework',
     'corsheaders',
-    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 REST_FRAMEWORK = {
@@ -62,6 +65,25 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+# JavaScript Web Token
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'USER_ID_FIELD': 'username',
+    'USER_ID_CLAIM': 'username',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+}
+
+#custom User Model
+AUTH_USER_MODEL = 'atc_app.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,8 +99,9 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
-
 ]
+
+# CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'atc_project.urls'
 
@@ -151,6 +174,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

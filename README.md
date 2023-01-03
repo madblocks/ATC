@@ -16,10 +16,10 @@ Additional
 - Messaging system
 
 Tech
-React, (React Native?), Django, NextJS, PSQL
+React, NextJS, Django, PSQL
 
 Languages
-JS, Python, TypeScript
+JS, Python
 
 Trello - https://trello.com/b/fjNf6uZj/atc
 ERD - https://app.diagrams.net/#G1zqVpfTr_HdkTnneqk_vm_blONzdEZehF
