@@ -7,7 +7,6 @@ from .models import User  # ...your other models
 from .serializers import UserSerializer # ...your other serializers
 
 
-# Create your views here.
 # User views
 class UserList(APIView):
     def get(self, request):
