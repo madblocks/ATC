@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from '../public/svgs/plane-logo.svg'
+import User from './user.js'
 import { FaUser } from "react-icons/fa";
 
 export default function Navbar ({home}) {
@@ -9,6 +10,7 @@ export default function Navbar ({home}) {
         <Logo className="text-5xl fill-green-500"/>
         <div className="text-white pl-5 text-4xl font-poppins">ATC</div>
       </div>
+      <User />
       <div className="w-2/4 flex justify-end">
         <FaUser className="text-4xl fill-yellow-300"/>
       </div>
