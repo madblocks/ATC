@@ -48,6 +48,13 @@ export default function CreateButton() {
                 </div>
                 <Textarea id="decription" required={true} name="decription" value={formData.decription} onChange={handleForm}/>
               </div>
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="logo" value="Logo URL"/>
+                </div>
+                <TextInput id="logo" placeholder="Logo URL" name="logo" value={formData.logo} required={true} onChange={handleForm}/>
+              </div>
+              <div></div>
               <Button type="submit" gradientDuoTone="cyanToBlue">
                 Create
               </Button>
