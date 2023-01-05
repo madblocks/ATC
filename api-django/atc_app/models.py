@@ -10,28 +10,46 @@ class User(AbstractUser):
   def __str__(self):
     return self.username
 
+class Manufacturer(models.Model):
+  company_name = models.CharField(max_length=100)
+  description = models.TextField(max_length=100)
 
-# class Venue(models.Model):
-#     venuename = models.CharField(max_length=100)
-#     address = models.CharField(max_length=100)
-#     city = models.CharField(max_length=100)
-#     state = models.CharField(max_length=100)
-#     vaccinationrequired = models.BooleanField(blank=False)
-#     img = models.CharField(max_length=100, null=True)
+  def __str__(self):
+    return self.company_name
 
-#     def __str__(self):
-#         return self.venuename
+class Category(models.Model):
+  category = models.CharField(max_length=50)
 
+  def __str__(self):
+    return self.category
 
-# class Event(models.Model):
-#     venue = models.ForeignKey(
-#         Venue, on_delete=models.CASCADE, related_name="event")
+class Tool(models.Model):
+  category = models.ForeignKey(
+    Category, related_name="category"
+  )
+  manufacturer = models.ForeignKey(
+    Manufacturer, related_name="manufacturer"
+  )
+  name = models.CharField(max_length=100)
+  description = models.TextField(max_length=100)
+  img = models.CharField(max_length=254)
 
-#     eventname = models.CharField(max_length=100)
-#     datetime = models.DateTimeField(null=True)
-#     price = models.DecimalField(max_digits=6, decimal_places=2)
-#     details = models.TextField()
-#     img = models.CharField(max_length=100, null=True)
+  def __str__(self):
+    return self.name
 
-#     def __str__(self):
-#         return self.eventname
+class Collection(models.Model):
+  user = models.ForeignKey(
+    User, on_delete=models.CASCADE, related_name="collection"
+  )
+  name = models.CharField(max_length=100)
+
+  def __str__(self):
+    return self.name
+
+class CollectionTools(models.Model):
+  collection = models.ForeignKey(
+    Collection, on_delete=models.CASCADE
+  )
+  tools = models.ForeignKey(
+    Tool, on_delete=models.CASCADE
+  )
