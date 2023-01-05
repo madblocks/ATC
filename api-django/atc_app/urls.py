@@ -1,14 +1,10 @@
 from django.urls import path
-from . import views, serializers
+from . import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import ( TokenObtainPairView, TokenRefreshView, TokenVerifyView)
 
 
 urlpatterns = [
-    # path('venues/', views.VenueList.as_view(), name='venue_list'),
-    # path('venues/<int:pk>', views.VenueDetail.as_view(), name='venue-detail'),
-    # path('events/', views.EventList.as_view(), name="event_list"),
-    # path('events/<int:pk>', views.EventDetail.as_view(), name="event-detail"),
 
     # SimpleJWT URLS
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -17,12 +13,16 @@ urlpatterns = [
     path('blacklist/', views.UserLogout.as_view(), name='token-blacklist'),
 
     # User URLS
-    # path('users/', views.UserList.as_view(), name='user_list'),
     path('users/create/', views.UserCreate.as_view(), name='user_create'),
     # path('users/logout', views.UserLogout.as_view(), name='user_logout'),
     # path('users/<int:pk>', views.UserDetail.as_view(), name='user_detail'),
     # path('users/<str:username>', views.UserDetailByUsername.as_view(), name='user_detail_by_username'),
 
-    
-    # path('events/delete/:id', views.DeleteEvent.as_view(), name="delete-event")
+    # Manufacturer URLS
+    path('manufacturers/', views.ManufacturerList.as_view(), name='manufacturer_list'),
+    path('manufacturers/<int:pk>', views.ManufacturerDetail.as_view(), name='manufacturer_detail'),
+
+    # Tools URLS
+    path('tools/', views.ToolList.as_view(), name='tool_list'),
+    path('tools/<int:pk>', views.ToolDetail.as_view(), name='tool_detail'),
 ]

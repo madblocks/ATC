@@ -5,7 +5,6 @@ class User(AbstractUser):
   
   profile_img = models.CharField(max_length=512, blank=True, null=True)
   bio = models.TextField(null=True)
-  # (Many to Many example?) locations = models.ManyToManyField(locations, through='maps')
 
   def __str__(self):
     return self.username
@@ -13,23 +12,16 @@ class User(AbstractUser):
 class Manufacturer(models.Model):
   company_name = models.CharField(max_length=100)
   description = models.TextField(max_length=100)
+  logo = models.CharField(max_length=100)
 
   def __str__(self):
     return self.company_name
 
-class Category(models.Model):
-  category = models.CharField(max_length=50)
-
-  def __str__(self):
-    return self.category
-
 class Tool(models.Model):
-  category = models.ForeignKey(
-    Category, related_name="category"
-  )
   manufacturer = models.ForeignKey(
-    Manufacturer, related_name="manufacturer"
+    Manufacturer, on_delete=models.CASCADE
   )
+  category = models.CharField(max_length=100, null=True)
   name = models.CharField(max_length=100)
   description = models.TextField(max_length=100)
   img = models.CharField(max_length=254)
@@ -42,6 +34,7 @@ class Collection(models.Model):
     User, on_delete=models.CASCADE, related_name="collection"
   )
   name = models.CharField(max_length=100)
+  tools = models.ManyToManyField(Tool, through='CollectionTools')
 
   def __str__(self):
     return self.name

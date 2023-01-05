@@ -3,15 +3,11 @@ from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import User  # ...your other models
-from .serializers import UserSerializer # ...your other serializers
+from .models import User, Manufacturer, Tool
+from .serializers import UserSerializer, ManufacturerSerializer, ToolSerializer
 
 
 # User views
-class UserList(APIView):
-    def get(self, request):
-        users = User.objects.all()
-        return Response(users)
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
@@ -45,3 +41,26 @@ class UserLogout(APIView):
         token = RefreshToken(refresh_token)
         token.blacklist()
         return Response(status=status.HTTP_205_RESET_CONTENT)
+
+# Manufacturer Views
+class ManufacturerList(generics.ListCreateAPIView):
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
+    permission_classes = [
+        permissions.AllowAny,  # Unauthenticated users can view Manufacturer Index
+    ]
+
+class ManufacturerDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
+
+class ToolList(generics.ListAPIView):
+    queryset = Tool.objects.all()
+    serializer_class = ToolSerializer
+    permission_classes = [
+        permissions.AllowAny,  # Unauthenticated users can view Tool Index
+    ]
+    
+class ToolDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tool.objects.all()
+    serializer_class = ToolSerializer

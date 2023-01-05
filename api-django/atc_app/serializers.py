@@ -1,4 +1,4 @@
-from .models import User 
+from .models import User, Manufacturer, Tool
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -19,3 +19,24 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+class ToolSerializer(serializers.HyperlinkedModelSerializer):
+
+    manufacturer = serializers.HyperlinkedRelatedField(
+        view_name='manufacturer_detail',
+        read_only=True
+    )
+
+    class Meta:
+        model = Tool
+        fields = ('id', 'name', 'category', 'description', 'img', 'manufacturer')
+
+class ManufacturerSerializer(serializers.HyperlinkedModelSerializer):
+    tool = ToolSerializer(
+        many=True,
+        read_only=True
+    )
+
+    class Meta:
+        model = Manufacturer
+        fields = ('id', 'company_name', 'description', 'logo')
