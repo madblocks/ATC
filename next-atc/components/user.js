@@ -51,7 +51,7 @@ export default function User () {
       if (res.data.access) {
         setUser(formData.username) // Would be better to get a username from a custom token claim: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
       }
-      toggleLoginModal() // close modal
+      toggleLoginModal()
     } catch (error) {
       throw error
     }

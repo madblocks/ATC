@@ -5,6 +5,7 @@ export default function ToolDetail () {
   return (
     <DetailLayout>
       <Head></Head>
+      <div className="text-white">Tool Details</div>
     </DetailLayout>
   )
 }

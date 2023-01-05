@@ -5,6 +5,7 @@ export default function ManufacturerIndex () {
   return (
     <IndexLayout>
       <Head></Head>
+      <div className="text-white">Manufacturer Index</div>
     </IndexLayout>
   )
 }

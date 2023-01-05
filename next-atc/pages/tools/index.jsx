@@ -5,6 +5,7 @@ export default function ToolIndex () {
   return (
     <IndexLayout>
       <Head></Head>
+      <div className="text-white">Tool Index</div>
     </IndexLayout>
   )
 }

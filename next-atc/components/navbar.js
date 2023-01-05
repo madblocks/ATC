@@ -10,17 +10,16 @@ export default function Navbar ({home}) {
 
   return (
     <div className="flex bg-gray-700 h-16 items-center px-10">
-      <div className="w-1/3 flex items-center">
+      <div className="w-3/5 flex items-center">
         <Link href="/" className="flex items-center">
           <Logo className="text-5xl fill-green-500 inline-block"/>
           <div className="text-white pl-5 text-4xl font-poppins inline-block">ATC</div>
         </Link>
+        <div className="ml-10 h-10 w-1 bg-yellow-300"></div>
+        <Link href="/tools" className="text-white ml-10 mr-4 box-border border-b-2 border-transparent hover:border-b-2 hover:border-white">Tools</Link>
+        <Link href="/manufacturers" className="text-white box-border border-b-2 border-transparent hover:border-b-2 hover:border-white">Manufacturers</Link>
       </div>
-      <div className="w-1/3 flex items-center">
-        <Link href="/tools">Tools</Link>
-        <Link href="/manufacturers">Manufacturers</Link>
-      </div>
-      <div className="w-1/3 flex justify-end items-center gap-5">
+      <div className="w-2/5 flex justify-end items-center gap-5">
         {Boolean(user) ? null : 
           <Link href="/register">
             <Button gradientDuoTone="cyanToBlue">

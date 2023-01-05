@@ -5,6 +5,7 @@ export default function ManufacturerDetail () {
   return (
     <DetailLayout>
       <Head></Head>
+      <div className="text-white">Manufacturer Details</div>
     </DetailLayout>
   )
 }
