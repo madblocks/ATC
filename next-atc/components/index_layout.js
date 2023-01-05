@@ -3,12 +3,13 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import Link from 'next/link';
 import Navbar from '../components/navbar'
-import Create from './create'
+import CreateButton from './create_button'
 
 export default function IndexLayout({children}) {
   return (
     <>
       <Navbar/>
+      <CreateButton />
       {children}
     </>
   )
