@@ -1,14 +1,18 @@
-export default function Alert({message}) {
+import { useRouter } from 'next/router'
+import { Alert } from 'flowbite-react'
+
+export default function AlertMessage({status, message, onDismiss}) {
   return (
     <Alert
       color="success"
-      onDismiss={function onDismiss(){return alert("Alert dismissed!")}}
+      onDismiss={onDismiss}
+      // onDismiss={function onDismiss(){return alert("Alert dismissed!")}}
     >
       <span>
         <span className="font-medium">
-          Info alert!
+          {status}
         </span>
-        {' '}Change a few things up and try submitting again.
+        {' '}{message}
       </span>
     </Alert>
   )

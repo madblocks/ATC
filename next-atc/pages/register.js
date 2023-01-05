@@ -3,33 +3,45 @@ import Navbar from '../components/navbar'
 import { useState } from "react"
 import { Button, Label, TextInput } from 'flowbite-react'
 import Client from '../services/client'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import AlertMessage from '../components/alert'
 
 export default function Register () {
 
-    const [formData, setFormData] = useState({
-        username: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: '',
-    })
+  const router = useRouter();
 
-    const handleRegisterForm = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
-    }
+  const [formData, setFormData] = useState({
+      username: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+  })
 
-    const handleRegister = async (e) => {
-        e.preventDefault()
-        try {
-            const res = await Client.post(`/users/create/`, formData)
-            console.log(res)
-            return res.data
-            
-        } catch (error) {
-            throw error
+  const [successAlert, setSuccessAlert] = useState(false)
+
+  const handleRegisterForm = (e) => {
+      setFormData({...formData, [e.target.name]: e.target.value})
+  }
+
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    try {
+        const res = await Client.post(`/users/create/`, formData)
+        console.log(res)
+        if (res.status === 201) {
+          setSuccessAlert(true)
         }
-    }
+        return res           
+    } catch (error) {
+        throw error
+    } 
+  }
+
+  const dismissAlert = () => {
+    setSuccessAlert(false)
+    router.push('/')
+  }
 
   return (
     <>
@@ -39,6 +51,9 @@ export default function Register () {
         </title>
       </Head>
       <Navbar home/>
+      {successAlert ? 
+        <AlertMessage status={'Success!'} message={'Please Log In.'} onDismiss={dismissAlert}/> : null
+      }
       <div className="w-3/5 m-auto mt-20 max-w-xl">
         <form className="flex flex-col gap-4" onSubmit={handleRegister}>
           <div className="row">
@@ -77,7 +92,7 @@ export default function Register () {
             </Button>
           </div>
         </form>
-      </div>  
+      </div>
     </>
   )
 }
