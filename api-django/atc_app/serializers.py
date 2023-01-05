@@ -4,8 +4,6 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
-    first_name = serializers.CharField()
-    last_name = serializers.CharField()
     username = serializers.CharField(required=True)
     password = serializers.CharField(min_length=8, write_only=True)
 

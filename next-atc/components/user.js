@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaUserCircle } from 'react-icons/fa'
 import { Dropdown, Modal, Button, Label, TextInput, Checkbox } from 'flowbite-react'
 import { useUserContext } from "../context/UserContext"
@@ -9,6 +9,26 @@ export default function User () {
   const { user, setUser, setAuth, setTokens } = useUserContext()
   const [ formData, setFormData ] = useState({username: '', password: ''})
   const [ showLoginModal, setShowLoginModal ] = useState(false)
+
+  // will need custom token claim that returns username: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
+  // const checkToken = async () =>{
+  //   // const user = await CheckSession();
+  //   console.log(user)
+  //   setUser(user)
+  //   setAuth(true)
+  // }
+
+  // investigate cookies over localStorage or sessionStorage
+  useEffect(()=> {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    console.log(user)
+    if (token) {
+      setUser(localStorage.getItem('user'))
+      setAuth(true)
+      // checkToken();
+    }
+  },[])
 
   const toggleLoginModal = () => {
     setShowLoginModal(!showLoginModal)
@@ -28,7 +48,9 @@ export default function User () {
       localStorage.setItem('user', formData.username)
       setTokens(res.data)
       setAuth(true)
-      setUser(formData.username) // Would be better to get a username from a custom token claim: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
+      if (res.data.access) {
+        setUser(formData.username) // Would be better to get a username from a custom token claim: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
+      }
       toggleLoginModal() // close modal
     } catch (error) {
       throw error
@@ -47,16 +69,14 @@ export default function User () {
       <Dropdown className="w-[120px]" label={<FaUserCircle className="text-4xl fill-yellow-300"/>} arrowIcon={true} inline={true}>
         {Boolean(user) ? <Dropdown.Header>
           <span className="block text-sm">
+            Signed in as <br/>
             {user}
           </span>
         </Dropdown.Header> : null}
-        <Dropdown.Item onClick={toggleLoginModal}>
-          Sign In
-        </Dropdown.Item>
-        {/* <Dropdown.Item>
-          Home
-        </Dropdown.Item>
-        */}
+        {Boolean(user) ? null :
+          <Dropdown.Item onClick={toggleLoginModal}>
+            Sign In
+          </Dropdown.Item>}
         <Dropdown.Item>
           Profile
         </Dropdown.Item> 
