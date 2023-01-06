@@ -44,12 +44,13 @@ class UserLogout(APIView):
 
 # Manufacturer Views
 class ManufacturerListCreate(generics.ListCreateAPIView):
-    queryset = Manufacturer.objects.all()
+    # queryset = Manufacturer.objects.all()
+    queryset = Manufacturer.objects.order_by('company_name')
     serializer_class = ManufacturerSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,  # Unauthenticated users can view Manufacturer Index
     ]
-    ordering = ['company_name']
+    # ordering = ['company_name']
 
 class ManufacturerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Manufacturer.objects.all()
