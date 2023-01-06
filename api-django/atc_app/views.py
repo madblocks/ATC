@@ -49,6 +49,7 @@ class ManufacturerListCreate(generics.ListCreateAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,  # Unauthenticated users can view Manufacturer Index
     ]
+    ordering = ['company_name']
 
 class ManufacturerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Manufacturer.objects.all()
