@@ -1,12 +1,12 @@
 # ATC
 Antique Tool Collector
 
-At it's core, ATC will be an app to catalogue antique tools and allow users to create and share collections.  Due to the lack of any existing difinitive lists the catalogue will have to be a user created or simple wiki.
+At it's core, ATC will be an app to catalogue antique tools and allow users to create and share collections.  
 
 ## Goals
 
 Main
-- Create a functioning mobile-first wiki type catalogue of antique tools for reference in creating and sharing user collections.
+- Create a responsive wiki type catalogue of antique tools for reference in creating and sharing user collections.
 
 Additional
 - Trading/Selling
@@ -15,11 +15,11 @@ Additional
 - Search
 - Messaging system
 
-Tech
-React, NextJS, Django, PSQL
+## Tech Stack
+React, NextJS, Django, PSQL, Tailwind
 
-Languages
-JS, Python
+## Languages
+[![My Skills](https://skills.thijs.gg/icons?i=js,py,tailwind)](https://skills.thijs.gg)
 
-Trello - https://trello.com/b/fjNf6uZj/atc
-ERD - https://app.diagrams.net/#G1zqVpfTr_HdkTnneqk_vm_blONzdEZehF
+[Trello](https://trello.com/b/fjNf6uZj/atc)
+[ERD](https://app.diagrams.net/#G1zqVpfTr_HdkTnneqk_vm_blONzdEZehF)
