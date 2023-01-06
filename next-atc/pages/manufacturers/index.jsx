@@ -1,7 +1,7 @@
 import IndexLayout from '../../components/index_layout'
 import Head from 'next/head';
 import Image from 'next/image'
-import Client from '../../services/Client'
+import Client from '../../services/client'
 import { useEffect, useState } from 'react'
 import { Card } from 'flowbite-react'
 import DeleteButton from '../../components/delete_button'

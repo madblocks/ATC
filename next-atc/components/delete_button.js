@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, Modal } from 'flowbite-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import Client from '../services/Client'
+import Client from '../services/client'
 import { useIndexContext } from "../context/IndexContext"
 import { FiTrash2 } from "react-icons/fi"
 

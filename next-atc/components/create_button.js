@@ -3,7 +3,7 @@ import { SlPlus } from "react-icons/sl";
 import { Button, Modal, Label, TextInput, Textarea } from 'flowbite-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import Client from '../services/Client'
+import Client from '../services/client'
 import { useIndexContext } from "../context/IndexContext"
 
 export default function CreateButton() {
