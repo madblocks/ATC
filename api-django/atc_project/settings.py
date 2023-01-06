@@ -102,6 +102,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
+    "https://atc-alpha.vercel.app"
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
