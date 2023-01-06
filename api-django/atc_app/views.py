@@ -43,7 +43,7 @@ class UserLogout(APIView):
         return Response(status=status.HTTP_205_RESET_CONTENT)
 
 # Manufacturer Views
-class ManufacturerList(generics.ListCreateAPIView):
+class ManufacturerListCreate(generics.ListCreateAPIView):
     queryset = Manufacturer.objects.all()
     serializer_class = ManufacturerSerializer
     permission_classes = [
@@ -54,7 +54,7 @@ class ManufacturerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Manufacturer.objects.all()
     serializer_class = ManufacturerSerializer
 
-class ToolList(generics.ListAPIView):
+class ToolListCreate(generics.ListCreateAPIView):
     queryset = Tool.objects.all()
     serializer_class = ToolSerializer
     permission_classes = [

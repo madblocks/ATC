@@ -39,4 +39,4 @@ class ManufacturerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Manufacturer
-        fields = ('id', 'company_name', 'description', 'logo')
+        fields = ('id', 'company_name', 'description', 'logo', 'tool')

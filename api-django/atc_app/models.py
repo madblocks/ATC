@@ -11,8 +11,8 @@ class User(AbstractUser):
 
 class Manufacturer(models.Model):
   company_name = models.CharField(max_length=100)
-  description = models.TextField(max_length=100)
-  logo = models.CharField(max_length=100)
+  description = models.TextField()
+  logo = models.CharField(max_length=100, null=True)
 
   def __str__(self):
     return self.company_name
@@ -23,7 +23,7 @@ class Tool(models.Model):
   )
   category = models.CharField(max_length=100, null=True)
   name = models.CharField(max_length=100)
-  description = models.TextField(max_length=100)
+  description = models.TextField()
   img = models.CharField(max_length=254)
 
   def __str__(self):

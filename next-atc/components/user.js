@@ -66,7 +66,7 @@ export default function User () {
 
   return (
     <div>
-      <Dropdown className="w-[120px]" label={<FaUserCircle className="text-4xl fill-yellow-300"/>} arrowIcon={true} inline={true}>
+      <Dropdown className="w-[120px]" label={<FaUserCircle className="text-4xl fill-yellow-300 hover:fill-green-500"/>} arrowIcon={true} inline={true}>
         {Boolean(user) ? <Dropdown.Header>
           <span className="block text-sm">
             Signed in as <br/>

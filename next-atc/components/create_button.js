@@ -3,6 +3,7 @@ import { SlPlus } from "react-icons/sl";
 import { Button, Modal, Label, TextInput, Textarea } from 'flowbite-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import Client from '../services/Client'
 
 export default function CreateButton() {
 
@@ -14,7 +15,8 @@ export default function CreateButton() {
 
   useEffect(()=> {
     console.log(router.route.split('/')[1])
-    setRoute(router.route.split('/')[1])
+    let currentRoute = router.route.split('/')[1]
+    setRoute(currentRoute)
   },[])
 
   const toggleCreateModal = () => {
@@ -26,7 +28,21 @@ export default function CreateButton() {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
-  return (
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await Client.post(`${route}/`, formData) 
+      console.log(formData)
+      console.log(res.data)
+      // toggleCreateModal()
+    } catch (error) {
+      throw error
+    }
+    toggleCreateModal()
+  }
+
+  return formData ? (
+    
     <>
       <SlPlus className="fill-yellow-300 absolute top-20 right-14 text-4xl hover:fill-green-500" onClick={toggleCreateModal}/>
       <Modal show={showCreateModal} onClose={toggleCreateModal}>
@@ -35,24 +51,24 @@ export default function CreateButton() {
         </Modal.Header>
         { route === 'manufacturers' ? 
           <Modal.Body>
-            <form className="flex flex-col gap-4" onSubmit={handleForm}>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div>
                 <div className="mb-2 block">
-                  <Label htmlFor="companyName" value="Company Name"/>
+                  <Label htmlFor="company_name" value="Company Name"/>
                 </div>
-                <TextInput id="companyName" placeholder="Company Name" name="company_name" value={formData.company_name} required={true} onChange={handleForm}/>
+                <TextInput id="company_name" placeholder="Company Name" name="company_name" value={formData.company_name} required={true} onChange={handleForm}/>
               </div>
               <div>
                 <div className="mb-2 block">
-                  <Label htmlFor="decription" value="Description"/>
+                  <Label htmlFor="description" value="Description"/>
                 </div>
-                <Textarea id="decription" required={true} name="decription" value={formData.decription} onChange={handleForm}/>
+                <Textarea id="description" required={true} name="description" value={formData.description} onChange={handleForm}/>
               </div>
               <div>
                 <div className="mb-2 block">
                   <Label htmlFor="logo" value="Logo URL"/>
                 </div>
-                <TextInput id="logo" placeholder="Logo URL" name="logo" value={formData.logo} required={true} onChange={handleForm}/>
+                <TextInput id="logo" placeholder="Logo URL" name="logo" value={formData.logo} onChange={handleForm}/>
               </div>
               <div></div>
               <Button type="submit" gradientDuoTone="cyanToBlue">
@@ -61,7 +77,7 @@ export default function CreateButton() {
             </form>
           </Modal.Body> :
           <Modal.Body>
-            <form className="flex flex-col gap-4" onSubmit={handleForm}>
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div>
                 <div className="mb-2 block">
                   <Label htmlFor="name" value="Name"/>
@@ -70,9 +86,9 @@ export default function CreateButton() {
               </div>
               <div>
                 <div className="mb-2 block">
-                  <Label htmlFor="decription" value="Description"/>
+                  <Label htmlFor="description" value="Description"/>
                 </div>
-                <Textarea id="decription" type="decription" required={true} name="decription" value={formData.decription} onChange={handleForm}/>
+                <Textarea id="description" type="description" required={true} name="description" value={formData.description} onChange={handleForm}/>
               </div>
               <div>
                 <div className="mb-2 block">
@@ -87,6 +103,7 @@ export default function CreateButton() {
           </Modal.Body> }
       </Modal>
     </>
-  )
+    
+  ) : null
 }
 

@@ -19,10 +19,10 @@ urlpatterns = [
     # path('users/<str:username>', views.UserDetailByUsername.as_view(), name='user_detail_by_username'),
 
     # Manufacturer URLS
-    path('manufacturers/', views.ManufacturerList.as_view(), name='manufacturer_list'),
+    path('manufacturers/', views.ManufacturerListCreate.as_view(), name='manufacturer_list'),
     path('manufacturers/<int:pk>', views.ManufacturerDetail.as_view(), name='manufacturer_detail'),
 
     # Tools URLS
-    path('tools/', views.ToolList.as_view(), name='tool_list'),
+    path('tools/', views.ToolListCreate.as_view(), name='tool_list'),
     path('tools/<int:pk>', views.ToolDetail.as_view(), name='tool_detail'),
 ]
