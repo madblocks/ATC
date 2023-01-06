@@ -42,7 +42,7 @@ export default function ManufacturerIndex () {
           >
             <div className="flex items-center">
               <div className="text-xl font-bold w-1/2">{manufacturer.company_name}</div>
-              <div className="w-1/2 flex justify-end">
+              <div className="w-1/2 h-auto flex justify-end">
                 { manufacturer.logo ? 
                   <Image src={manufacturer.logo} alt="logo" width={100} height={100} object-fit="contain"/> : null
                 }
