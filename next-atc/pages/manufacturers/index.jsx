@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Client from '../../services/Client'
 import { useEffect, useState } from 'react'
 import { Card } from 'flowbite-react'
-import { FaEdit } from "react-icons/fa"
-import { FiTrash2 } from "react-icons/fi"
+import DeleteButton from '../../components/delete_button'
+import EditButton from '../../components/edit_button'
 import { useIndexContext } from "../../context/IndexContext"
 import { UserProvider } from "../../context/UserContext"
 
@@ -55,11 +55,10 @@ export default function ManufacturerIndex () {
               <div className="w-1/6 flex justify-end items-end">
                 { active === i &&
                   <div className="flex">
-                    <FaEdit className="text-3xl hover:text-green-500"/>
-                    <FiTrash2 className="text-3xl hover:text-red-500"/>
+                    <EditButton />
+                    <DeleteButton />
                   </div>
-                }
-                
+                }         
               </div>
             </div>
           </Card>

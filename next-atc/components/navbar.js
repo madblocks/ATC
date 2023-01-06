@@ -24,10 +24,10 @@ export default function Navbar ({home}) {
           <div className="text-white pl-5 text-4xl font-poppins inline-block">ATC</div>
         </Link>
         <div className="ml-10 h-10 w-1 bg-yellow-300"></div>
-        <Link href="/tools" className={"text-white ml-10 mr-4 box-border border-b-2 hover:border-b-2 hover:border-white"
+        <Link href="/tools" className={"text-white ml-10 mr-4 box-border border-b-2 hover:border-b-2 hover:text-green-400 hover:border-green-400"
           + (route === 'tools' ? " border-b-2" : " border-transparent")}>Tools
         </Link>
-        <Link href="/manufacturers" className={"text-white box-border border-b-2 hover:border-b-2 hover:border-white"
+        <Link href="/manufacturers" className={"text-white box-border border-b-2 hover:border-b-2 hover:text-green-400 hover:border-green-400"
           + (route === 'manufacturers' ? " border-b-2" : " border-transparent")}>Manufacturers
         </Link>
       </div>
