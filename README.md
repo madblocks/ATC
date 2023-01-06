@@ -16,10 +16,11 @@ Additional
 - Messaging system
 
 ## Tech Stack
-React, NextJS, Django, PSQL, Tailwind
+React, NextJS, Django, Postgres, Tailwind
+[![My Skills](https://skills.thijs.gg/icons?i=react,nextjs,django,postgres,tailwind&theme=light)](https://skills.thijs.gg)
 
 ## Languages
-[![My Skills](https://skills.thijs.gg/icons?i=js,py,tailwind)](https://skills.thijs.gg)
+[![My Skills](https://skills.thijs.gg/icons?i=js,py)](https://skills.thijs.gg)
 
 [Trello](https://trello.com/b/fjNf6uZj/atc)
 
