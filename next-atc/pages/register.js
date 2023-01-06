@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Navbar from '../components/navbar'
 import { useState } from "react"
-import { Button, Label, TextInput } from 'flowbite-react'
+import { Button, Label, TextInput, Modal } from 'flowbite-react'
 import Client from '../services/client'
 import { useRouter } from 'next/router'
 import AlertMessage from '../components/alert'
@@ -52,7 +52,7 @@ export default function Register () {
       </Head>
       <Navbar home/>
       {successAlert ? 
-        <AlertMessage status={'Success!'} message={'Please Log In.'} onDismiss={dismissAlert}/> : null
+        <Modal show={successAlert}><AlertMessage status={'Success!'} color={'success'} message={'  Please Log In.'} onDismiss={dismissAlert}/></Modal> : null
       }
       <div className="w-3/5 m-auto mt-20 max-w-xl">
         <form className="flex flex-col gap-4" onSubmit={handleRegister}>

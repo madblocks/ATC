@@ -1,18 +1,17 @@
-import { useRouter } from 'next/router'
 import { Alert } from 'flowbite-react'
 
-export default function AlertMessage({status, message, onDismiss}) {
+export default function AlertMessage({status, color, message, onDismiss}) {
+
   return (
     <Alert
-      color="success"
+      color={color}
       onDismiss={onDismiss}
-      // onDismiss={function onDismiss(){return alert("Alert dismissed!")}}
     >
       <span>
         <span className="font-medium">
-          {status}
+          {status}.
         </span>
-        {' '}{message}
+        {'    '}{message}
       </span>
     </Alert>
   )

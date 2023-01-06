@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import Client from '../services/Client'
 import { useIndexContext } from "../context/IndexContext"
 import { FaEdit } from "react-icons/fa"
+import AlertMessage from './alert'
 
 export default function EditButton({item}) {
 
@@ -15,11 +16,15 @@ export default function EditButton({item}) {
   const [ showEditModal, setShowEditModal ] = useState(false)
   const [ formData, setFormData ] = useState({})
   const [ route, setRoute ] = useState()
+  const [ alert, setAlert ] = useState({
+    status: '',
+    message: ''
+  })
 
   useEffect(()=> {
     let currentRoute = router.route.split('/')[1]
     setRoute(currentRoute)
-    setFormData({...item}) 
+    setFormData({...item})
   },[])
 
   const toggleEditModal = () => {
@@ -35,11 +40,20 @@ export default function EditButton({item}) {
     try {
       const res = await Client.put(`${route}/${item.id}`, formData)
     } catch (error) {
-      throw error
+      //throw error
+      handleAlert('Failure', 'failure', '  You must be logged in to perform this action.')
     }
     toggleEditModal()
     setManIndexUpdated(manIndexUpdated + 1)
     setToolIndexUpdated(toolIndexUpdated + 1)
+  }
+
+  const handleAlert = (status, color, message) => {
+    setAlert({...alert, status: status, message: message, color: color})
+  }
+
+  const dismissAlert = () => {
+    setAlert(false)
   }
 
   return formData ? (
@@ -102,6 +116,8 @@ export default function EditButton({item}) {
             </form>
           </Modal.Body> }
       </Modal>
+      {alert.status ? <Modal show={alert.status}><AlertMessage className="absolute w-full top-50" status={alert.status} message={alert.message} onDismiss={dismissAlert}/>
+        </Modal> : null }
     </>
   ) : null
 }
