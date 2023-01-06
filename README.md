@@ -22,4 +22,5 @@ React, NextJS, Django, PSQL, Tailwind
 [![My Skills](https://skills.thijs.gg/icons?i=js,py,tailwind)](https://skills.thijs.gg)
 
 [Trello](https://trello.com/b/fjNf6uZj/atc)
+
 [ERD](https://app.diagrams.net/#G1zqVpfTr_HdkTnneqk_vm_blONzdEZehF)
