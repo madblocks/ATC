@@ -17,6 +17,7 @@ Additional
 
 ## Tech Stack
 React, NextJS, Django, Postgres, Tailwind  
+
 [![My Skills](https://skills.thijs.gg/icons?i=react,nextjs,django,postgres,tailwind)](https://skills.thijs.gg)
 
 ## Languages
