@@ -49,7 +49,7 @@ export default function CreateButton() {
   return formData ? (
     
     <>
-      <SlPlus className="fill-yellow-300 absolute top-20 right-14 text-4xl hover:fill-green-500" onClick={toggleCreateModal}/>
+      <SlPlus className="fill-yellow-300 fixed top-20 right-14 text-4xl hover:fill-green-500" onClick={toggleCreateModal}/>
       <Modal show={showCreateModal} onClose={toggleCreateModal}>
         <Modal.Header>
           Add {route}
