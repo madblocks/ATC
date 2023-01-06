@@ -4,10 +4,13 @@ import { Button, Modal, Label, TextInput, Textarea } from 'flowbite-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Client from '../services/Client'
+import { useIndexContext } from "../context/IndexContext"
 
 export default function CreateButton() {
 
   const router = useRouter()
+
+  const { manIndexUpdated, setManIndexUpdated, toolIndexUpdated, setToolIndexUpdated } = useIndexContext()
 
   const [ showCreateModal, setShowCreateModal ] = useState(false)
   const [ formData, setFormData ] = useState({})
@@ -39,6 +42,8 @@ export default function CreateButton() {
       throw error
     }
     toggleCreateModal()
+    setManIndexUpdated(manIndexUpdated + 1)
+    setToolIndexUpdated(toolIndexUpdated + 1)
   }
 
   return formData ? (

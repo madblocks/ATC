@@ -17,7 +17,7 @@ export default function Navbar ({home}) {
   },[])
 
   return (
-    <div className="flex bg-gray-700 h-16 items-center px-10">
+    <div className="flex bg-gray-700 h-16 items-center px-10 w-full top-0 fixed z-50">
       <div className="w-3/5 flex items-center">
         <Link href="/" className="flex items-center">
           <Logo className="text-5xl fill-green-500 inline-block"/>
