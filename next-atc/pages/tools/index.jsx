@@ -4,8 +4,8 @@ import Head from 'next/head';
 export default function ToolIndex () {
   return (
     <IndexLayout>
-      <Head></Head>
-      <div className="text-white">Tool Index</div>
+      <Head>Tool Index</Head>
+      <div className="text-white border-b-2 mx-28 mt-28 text-xl">Tool Index</div>
     </IndexLayout>
   )
 }

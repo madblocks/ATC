@@ -14,13 +14,12 @@ export default function EditButton({item}) {
 
   const [ showEditModal, setShowEditModal ] = useState(false)
   const [ formData, setFormData ] = useState({})
-  const [ id, setId ] = useState()
   const [ route, setRoute ] = useState()
 
   useEffect(()=> {
     let currentRoute = router.route.split('/')[1]
     setRoute(currentRoute)
-    setId(item.id)
+    setFormData({...item}) 
   },[])
 
   const toggleEditModal = () => {
