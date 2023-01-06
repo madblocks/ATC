@@ -17,12 +17,37 @@ export default function EditButton() {
   const [ route, setRoute ] = useState()
 
   useEffect(()=> {
-    console.log(router.route.split('/')[1])
     let currentRoute = router.route.split('/')[1]
     setRoute(currentRoute)
   },[])
 
+  const toggleEditModal = () => {
+    setShowEditModal(!showEditModal)
+  }
+
+  const handleEditModal = (e) => {
+
+  }
+
+  const handleEdit = async (e) =>  {
+    e.preventDefault()
+    try {
+      const res = await Client.put(`${route}/${id}`) 
+    } catch (error) {
+      throw error
+    }
+    toggleEditModal()
+    setManIndexUpdated(manIndexUpdated + 1)
+    setToolIndexUpdated(toolIndexUpdated + 1)
+  }
+
   return (
-    <FaEdit className="text-3xl hover:text-green-500"></FaEdit>
+    <>
+      <FaEdit className="text-3xl hover:text-green-500"></FaEdit>
+      <Modal show={showEditModal} onClose={toggleEditModal}>
+        <Modal.Header></Modal.Header>
+        <Modal.Body></Modal.Body>
+      </Modal>
+    </>
   )
 }

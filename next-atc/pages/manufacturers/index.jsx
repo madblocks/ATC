@@ -55,8 +55,8 @@ export default function ManufacturerIndex () {
               <div className="w-1/6 flex justify-end items-end">
                 { active === i &&
                   <div className="flex">
-                    <EditButton />
-                    <DeleteButton />
+                    <EditButton item={manufacturer}/>
+                    <DeleteButton item={manufacturer}/>
                   </div>
                 }         
               </div>

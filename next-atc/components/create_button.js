@@ -17,7 +17,6 @@ export default function CreateButton() {
   const [ route, setRoute ] = useState()
 
   useEffect(()=> {
-    console.log(router.route.split('/')[1])
     let currentRoute = router.route.split('/')[1]
     setRoute(currentRoute)
   },[])
