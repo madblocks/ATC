@@ -36,7 +36,6 @@ export default function CreateButton() {
       const res = await Client.post(`${route}/`, formData) 
       console.log(formData)
       console.log(res.data)
-      // toggleCreateModal()
     } catch (error) {
       throw error
     }
