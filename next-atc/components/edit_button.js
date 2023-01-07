@@ -49,7 +49,7 @@ export default function EditButton({item}) {
   }
 
   const handleAlert = (status, color, message) => {
-    setAlert({...alert, status: status, message: message, color: color})
+    setAlert({...alert, status: status, color: color, message: message })
   }
 
   const dismissAlert = () => {

@@ -32,7 +32,8 @@ export default function Navbar ({home}) {
         </Link>
       </div>
       <div className="w-2/5 flex justify-end items-center gap-5">
-        {Boolean(user) ? null : 
+        {(Boolean(user) || Boolean(process.env.NEXT_PUBLIC_DISABLE_REGISTRATION === 'true')) ? 
+          null : 
           <Link href="/register">
             <Button gradientDuoTone="cyanToBlue">
               Sign Up
